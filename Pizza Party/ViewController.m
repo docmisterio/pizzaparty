@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (nonatomic) UITableView *mainTable;
 
 @end
 
@@ -16,8 +17,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor greenColor];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.mainTable = [[UITableView alloc] init];
+    [self.view addSubview:self.mainTable];
 
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.mainTable.frame = self.view.bounds;
 }
 
 - (void)didReceiveMemoryWarning {
