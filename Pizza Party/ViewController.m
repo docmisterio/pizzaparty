@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic) UITableView *mainTable;
 
 @end
@@ -17,9 +17,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.mainTable = [[UITableView alloc] init];
-    [self.view addSubview:self.mainTable];
+    self.view.backgroundColor = [UIColor whiteColor]; //makes view white
+    self.mainTable = [[UITableView alloc] init]; //allocates and initilizes an instance of UITableView called mainTable
+    self.mainTable.dataSource = self; //gives mainTable a DataSource
+    self.mainTable.delegate = self; //gives mainTable a delegate
+    [self.mainTable registerClass:UITableViewCell.class forCellReuseIdentifier:@"UITableViewCell"]; //Still working on what this does...
+    [self.view addSubview:self.mainTable]; // creats a subView of View called mainTable
 
 }
 
@@ -28,9 +31,13 @@
     self.mainTable.frame = self.view.bounds;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 10;
 }
-
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+    cell.backgroundColor = [UIColor lightGrayColor];
+//    cell.textLabel.text = [NSString stringWithFormat:@"index: %d", (int)indexPath.row];
+    return cell;
+}
 @end
