@@ -21,7 +21,7 @@
     self.mainTable = [[UITableView alloc] init]; //allocates and initilizes an instance of UITableView called mainTable
     self.mainTable.dataSource = self; //gives mainTable a DataSource
     self.mainTable.delegate = self; //gives mainTable a delegate
-//    [self.mainTable registerClass:UITableViewCell.class forCellReuseIdentifier:@"UITableViewCell"]; //Still working on what this does...
+    [self.mainTable registerClass:UITableViewCell.class forCellReuseIdentifier:@"UITableViewCell"]; //Still working on what this does...
     [self.view addSubview:self.mainTable]; // creats a subView of View called mainTable
 
 }
